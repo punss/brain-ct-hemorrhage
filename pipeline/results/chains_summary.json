@@ -1,0 +1,162 @@
+{
+  "logistic_regression": {
+    "val_macro_auc": 0.6979,
+    "val_macro_f1": 0.2056,
+    "val_f1_calibrated": 0.4852,
+    "delta_auc_vs_ovr": 0.0003,
+    "thresholds": {
+      "epidural": 0.18,
+      "intraparenchymal": 0.33,
+      "intraventricular": 0.26,
+      "subarachnoid": 0.21,
+      "subdural": 0.2
+    },
+    "val_per_label_auc": {
+      "epidural": 0.718,
+      "intraparenchymal": 0.6998,
+      "intraventricular": 0.854,
+      "subarachnoid": 0.606,
+      "subdural": 0.6116
+    }
+  },
+  "lda": {
+    "val_macro_auc": 0.6855,
+    "val_macro_f1": 0.2303,
+    "val_f1_calibrated": 0.489,
+    "delta_auc_vs_ovr": 0.001,
+    "thresholds": {
+      "epidural": 0.14,
+      "intraparenchymal": 0.42,
+      "intraventricular": 0.3,
+      "subarachnoid": 0.19,
+      "subdural": 0.27
+    },
+    "val_per_label_auc": {
+      "epidural": 0.7019,
+      "intraparenchymal": 0.6718,
+      "intraventricular": 0.8401,
+      "subarachnoid": 0.6,
+      "subdural": 0.6136
+    }
+  },
+  "qda": {
+    "val_macro_auc": 0.672,
+    "val_macro_f1": 0.4032,
+    "val_f1_calibrated": 0.4544,
+    "delta_auc_vs_ovr": 0.0012,
+    "thresholds": {
+      "epidural": 0.28,
+      "intraparenchymal": 0.05,
+      "intraventricular": 0.94,
+      "subarachnoid": 0.06,
+      "subdural": 0.14
+    },
+    "val_per_label_auc": {
+      "epidural": 0.7591,
+      "intraparenchymal": 0.6396,
+      "intraventricular": 0.8225,
+      "subarachnoid": 0.59,
+      "subdural": 0.549
+    }
+  },
+  "gnb": {
+    "val_macro_auc": 0.6384,
+    "val_macro_f1": 0.2514,
+    "val_f1_calibrated": 0.4379,
+    "delta_auc_vs_ovr": -0.0022,
+    "thresholds": {
+      "epidural": 0.15,
+      "intraparenchymal": 0.25,
+      "intraventricular": 0.3,
+      "subarachnoid": 0.11,
+      "subdural": 0.18
+    },
+    "val_per_label_auc": {
+      "epidural": 0.665,
+      "intraparenchymal": 0.6139,
+      "intraventricular": 0.785,
+      "subarachnoid": 0.5377,
+      "subdural": 0.5904
+    }
+  },
+  "knn": {
+    "val_macro_auc": 0.6596,
+    "val_macro_f1": 0.2047,
+    "val_f1_calibrated": 0.4561,
+    "delta_auc_vs_ovr": -0.0008,
+    "thresholds": {
+      "epidural": 0.2,
+      "intraparenchymal": 0.12,
+      "intraventricular": 0.16,
+      "subarachnoid": 0.13,
+      "subdural": 0.06
+    },
+    "val_per_label_auc": {
+      "epidural": 0.7532,
+      "intraparenchymal": 0.6215,
+      "intraventricular": 0.7905,
+      "subarachnoid": 0.5874,
+      "subdural": 0.5456
+    }
+  },
+  "svm": {
+    "val_macro_auc": 0.7066,
+    "val_macro_f1": 0.1769,
+    "val_f1_calibrated": 0.5049,
+    "delta_auc_vs_ovr": -0.0002,
+    "thresholds": {
+      "epidural": 0.32,
+      "intraparenchymal": 0.27,
+      "intraventricular": 0.26,
+      "subarachnoid": 0.18,
+      "subdural": 0.16
+    },
+    "val_per_label_auc": {
+      "epidural": 0.8,
+      "intraparenchymal": 0.6939,
+      "intraventricular": 0.8159,
+      "subarachnoid": 0.6289,
+      "subdural": 0.5943
+    }
+  },
+  "random_forest": {
+    "val_macro_auc": 0.7046,
+    "val_macro_f1": 0.2016,
+    "val_f1_calibrated": 0.4995,
+    "delta_auc_vs_ovr": 0.0036,
+    "thresholds": {
+      "epidural": 0.26,
+      "intraparenchymal": 0.33,
+      "intraventricular": 0.3,
+      "subarachnoid": 0.25,
+      "subdural": 0.24
+    },
+    "val_per_label_auc": {
+      "epidural": 0.7638,
+      "intraparenchymal": 0.6874,
+      "intraventricular": 0.8049,
+      "subarachnoid": 0.6314,
+      "subdural": 0.6355
+    }
+  },
+  "xgboost": {
+    "val_macro_auc": 0.7279,
+    "val_macro_f1": 0.3202,
+    "val_f1_calibrated": 0.5126,
+    "delta_auc_vs_ovr": -0.0054,
+    "thresholds": {
+      "epidural": 0.18,
+      "intraparenchymal": 0.19,
+      "intraventricular": 0.33,
+      "subarachnoid": 0.13,
+      "subdural": 0.11
+    },
+    "val_per_label_auc": {
+      "epidural": 0.7981,
+      "intraparenchymal": 0.6993,
+      "intraventricular": 0.855,
+      "subarachnoid": 0.6671,
+      "subdural": 0.6199
+    }
+  }
+}

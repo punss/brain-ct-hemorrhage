@@ -1,0 +1,106 @@
+{
+  "gnb": {
+    "f1_default": 0.2512,
+    "f1_calibrated": 0.4382,
+    "delta_f1": 0.187,
+    "thresholds": {
+      "epidural": 0.22,
+      "intraparenchymal": 0.28,
+      "intraventricular": 0.3,
+      "subarachnoid": 0.16,
+      "subdural": 0.16
+    },
+    "val_macro_auc": 0.6406
+  },
+  "knn": {
+    "f1_default": 0.2109,
+    "f1_calibrated": 0.4556,
+    "delta_f1": 0.2447,
+    "thresholds": {
+      "epidural": 0.2,
+      "intraparenchymal": 0.12,
+      "intraventricular": 0.16,
+      "subarachnoid": 0.13,
+      "subdural": 0.06
+    },
+    "val_macro_auc": 0.6604
+  },
+  "lda": {
+    "f1_default": 0.2288,
+    "f1_calibrated": 0.49,
+    "delta_f1": 0.2612,
+    "thresholds": {
+      "epidural": 0.14,
+      "intraparenchymal": 0.28,
+      "intraventricular": 0.3,
+      "subarachnoid": 0.16,
+      "subdural": 0.26
+    },
+    "val_macro_auc": 0.6845
+  },
+  "logistic_regression": {
+    "f1_default": 0.203,
+    "f1_calibrated": 0.4845,
+    "delta_f1": 0.2815,
+    "thresholds": {
+      "epidural": 0.18,
+      "intraparenchymal": 0.33,
+      "intraventricular": 0.26,
+      "subarachnoid": 0.2,
+      "subdural": 0.25
+    },
+    "val_macro_auc": 0.6976
+  },
+  "qda": {
+    "f1_default": 0.4035,
+    "f1_calibrated": 0.4541,
+    "delta_f1": 0.0506,
+    "thresholds": {
+      "epidural": 0.28,
+      "intraparenchymal": 0.05,
+      "intraventricular": 0.94,
+      "subarachnoid": 0.07,
+      "subdural": 0.08
+    },
+    "val_macro_auc": 0.6708
+  },
+  "random_forest": {
+    "f1_default": 0.1951,
+    "f1_calibrated": 0.4923,
+    "delta_f1": 0.2972,
+    "thresholds": {
+      "epidural": 0.26,
+      "intraparenchymal": 0.33,
+      "intraventricular": 0.3,
+      "subarachnoid": 0.22,
+      "subdural": 0.25
+    },
+    "val_macro_auc": 0.701
+  },
+  "svm": {
+    "f1_default": 0.1769,
+    "f1_calibrated": 0.5057,
+    "delta_f1": 0.3288,
+    "thresholds": {
+      "epidural": 0.32,
+      "intraparenchymal": 0.27,
+      "intraventricular": 0.26,
+      "subarachnoid": 0.17,
+      "subdural": 0.16
+    },
+    "val_macro_auc": 0.7068
+  },
+  "xgboost": {
+    "f1_default": 0.3263,
+    "f1_calibrated": 0.5117,
+    "delta_f1": 0.1854,
+    "thresholds": {
+      "epidural": 0.12,
+      "intraparenchymal": 0.21,
+      "intraventricular": 0.33,
+      "subarachnoid": 0.05,
+      "subdural": 0.14
+    },
+    "val_macro_auc": 0.7333
+  }
+}

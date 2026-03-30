@@ -1,0 +1,28 @@
+# Large data files — obtain separately
+epidural.zip
+tf/cases.tfrecord.gz
+renders/
+HemorrhageLabels/hemorrhage-labels.csv
+HemorrhageLabels/Results_*.csv
+
+# Trained model weights — reproduce by running training scripts
+pipeline/models/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+
+# OS / editor
+.DS_Store
+.Rhistory
+.vscode/
+.idea/
+
+# Claude Code internals
+.claude/
