@@ -39,17 +39,17 @@
     "val_macro_auc": 0.6845
   },
   "logistic_regression": {
-    "f1_default": 0.203,
-    "f1_calibrated": 0.4845,
-    "delta_f1": 0.2815,
+    "f1_default": 0.4473,
+    "f1_calibrated": 0.4914,
+    "delta_f1": 0.0441,
     "thresholds": {
-      "epidural": 0.18,
-      "intraparenchymal": 0.33,
-      "intraventricular": 0.26,
-      "subarachnoid": 0.2,
-      "subdural": 0.25
+      "epidural": 0.5,
+      "intraparenchymal": 0.42,
+      "intraventricular": 0.76,
+      "subarachnoid": 0.4,
+      "subdural": 0.42
     },
-    "val_macro_auc": 0.6976
+    "val_macro_auc": 0.7023
   },
   "qda": {
     "f1_default": 0.4035,
@@ -65,30 +65,30 @@
     "val_macro_auc": 0.6708
   },
   "random_forest": {
-    "f1_default": 0.1951,
-    "f1_calibrated": 0.4923,
-    "delta_f1": 0.2972,
+    "f1_default": 0.2408,
+    "f1_calibrated": 0.5076,
+    "delta_f1": 0.2668,
     "thresholds": {
-      "epidural": 0.26,
-      "intraparenchymal": 0.33,
-      "intraventricular": 0.3,
-      "subarachnoid": 0.22,
-      "subdural": 0.25
+      "epidural": 0.28,
+      "intraparenchymal": 0.35,
+      "intraventricular": 0.32,
+      "subarachnoid": 0.32,
+      "subdural": 0.27
     },
-    "val_macro_auc": 0.701
+    "val_macro_auc": 0.7211
   },
   "svm": {
-    "f1_default": 0.1769,
-    "f1_calibrated": 0.5057,
-    "delta_f1": 0.3288,
+    "f1_default": 0.4162,
+    "f1_calibrated": 0.4976,
+    "delta_f1": 0.0814,
     "thresholds": {
-      "epidural": 0.32,
-      "intraparenchymal": 0.27,
-      "intraventricular": 0.26,
-      "subarachnoid": 0.17,
-      "subdural": 0.16
+      "epidural": 0.22,
+      "intraparenchymal": 0.37,
+      "intraventricular": 0.17,
+      "subarachnoid": 0.19,
+      "subdural": 0.21
     },
-    "val_macro_auc": 0.7068
+    "val_macro_auc": 0.7205
   },
   "xgboost": {
     "f1_default": 0.3263,

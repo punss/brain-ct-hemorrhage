@@ -88,7 +88,8 @@ MODELS = {
             ("scaler", StandardScaler()),
             ("pca",    PCA(random_state=42)),
             ("clf",    OneVsRestClassifier(
-                SVC(kernel="rbf", probability=True, random_state=42)
+                SVC(kernel="rbf", probability=True, random_state=42,
+                    class_weight="balanced")
             )),
         ]),
         "param_dist": {
@@ -103,7 +104,8 @@ MODELS = {
         "pipeline": Pipeline([
             ("scaler", StandardScaler()),
             ("clf",    OneVsRestClassifier(
-                RandomForestClassifier(random_state=42, n_jobs=1)
+                RandomForestClassifier(random_state=42, n_jobs=1,
+                                       class_weight="balanced")
             )),
         ]),
         "param_dist": {

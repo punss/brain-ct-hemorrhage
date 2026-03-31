@@ -1,40 +1,40 @@
 {
   "svm": {
-    "best_cv_macro_auc": 0.7156,
-    "val_macro_auc": 0.7068,
-    "val_macro_f1": 0.1769,
+    "best_cv_macro_auc": 0.7233,
+    "val_macro_auc": 0.7205,
+    "val_macro_f1": 0.4162,
     "val_per_label_auc": {
-      "epidural": 0.8002,
-      "intraparenchymal": 0.6938,
-      "intraventricular": 0.8159,
-      "subarachnoid": 0.6294,
-      "subdural": 0.5944
+      "epidural": 0.8296,
+      "intraparenchymal": 0.6919,
+      "intraventricular": 0.8371,
+      "subarachnoid": 0.6375,
+      "subdural": 0.6066
     },
     "best_params": {
       "pca__n_components": 120,
       "clf__estimator__gamma": 0.01,
       "clf__estimator__C": 1.0
     },
-    "train_time_s": 34.1
+    "train_time_s": 38.2
   },
   "random_forest": {
-    "best_cv_macro_auc": 0.7222,
-    "val_macro_auc": 0.701,
-    "val_macro_f1": 0.1951,
+    "best_cv_macro_auc": 0.7335,
+    "val_macro_auc": 0.7211,
+    "val_macro_f1": 0.2408,
     "val_per_label_auc": {
-      "epidural": 0.7603,
-      "intraparenchymal": 0.6853,
-      "intraventricular": 0.8049,
-      "subarachnoid": 0.6359,
-      "subdural": 0.6184
+      "epidural": 0.7919,
+      "intraparenchymal": 0.6914,
+      "intraventricular": 0.8469,
+      "subarachnoid": 0.655,
+      "subdural": 0.6201
     },
     "best_params": {
-      "clf__estimator__n_estimators": 300,
+      "clf__estimator__n_estimators": 500,
       "clf__estimator__min_samples_leaf": 2,
       "clf__estimator__max_features": "sqrt",
-      "clf__estimator__max_depth": null
+      "clf__estimator__max_depth": 30
     },
-    "train_time_s": 404.6
+    "train_time_s": 322.4
   },
   "xgboost": {
     "best_cv_macro_auc": 0.7336,
@@ -55,6 +55,6 @@
       "clf__estimator__learning_rate": 0.05,
       "clf__estimator__colsample_bytree": 0.6
     },
-    "train_time_s": 95.2
+    "train_time_s": 98.6
   }
 }

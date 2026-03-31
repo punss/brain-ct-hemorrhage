@@ -178,6 +178,7 @@ CHAIN_MODELS = {
         ("scaler", StandardScaler()),
         ("clf", make_chain(LogisticRegression(
             solver="saga", max_iter=3000, random_state=42,
+            class_weight="balanced",
             penalty=p["logistic_regression"]["clf__estimator__penalty"],
             C=p["logistic_regression"]["clf__estimator__C"],
         ))),
@@ -219,6 +220,7 @@ CHAIN_MODELS = {
         ("pca",   PCA(n_components=t2_params["svm"]["pca__n_components"], random_state=42)),
         ("clf",   make_chain(SVC(
             kernel="rbf", probability=True, random_state=42,
+            class_weight="balanced",
             C=t2_params["svm"]["clf__estimator__C"],
             gamma=t2_params["svm"]["clf__estimator__gamma"],
         ))),
@@ -227,6 +229,7 @@ CHAIN_MODELS = {
         ("scaler", StandardScaler()),
         ("clf",   make_chain(RandomForestClassifier(
             random_state=42, n_jobs=-1,
+            class_weight="balanced",
             n_estimators=t2_params["random_forest"]["clf__estimator__n_estimators"],
             min_samples_leaf=t2_params["random_forest"]["clf__estimator__min_samples_leaf"],
             max_features=t2_params["random_forest"]["clf__estimator__max_features"],

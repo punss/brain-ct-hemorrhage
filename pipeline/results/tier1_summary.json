@@ -1,20 +1,20 @@
 {
   "logistic_regression": {
-    "best_cv_macro_auc": 0.7019,
-    "val_macro_auc": 0.6976,
-    "val_macro_f1": 0.203,
+    "best_cv_macro_auc": 0.7012,
+    "val_macro_auc": 0.7023,
+    "val_macro_f1": 0.4473,
     "val_per_label_auc": {
-      "epidural": 0.7182,
-      "intraparenchymal": 0.7,
-      "intraventricular": 0.854,
-      "subarachnoid": 0.6048,
-      "subdural": 0.6109
+      "epidural": 0.7301,
+      "intraparenchymal": 0.6991,
+      "intraventricular": 0.866,
+      "subarachnoid": 0.6082,
+      "subdural": 0.6079
     },
     "best_params": {
       "clf__estimator__penalty": "l2",
       "clf__estimator__C": 0.01
     },
-    "train_time_s": 158.2
+    "train_time_s": 162.8
   },
   "lda": {
     "best_cv_macro_auc": 0.6857,
@@ -65,7 +65,7 @@
       "pca__n_components": 25,
       "clf__estimator__var_smoothing": 0.001
     },
-    "train_time_s": 0.3
+    "train_time_s": 0.4
   },
   "knn": {
     "best_cv_macro_auc": 0.6871,
@@ -84,6 +84,6 @@
       "clf__estimator__n_neighbors": 15,
       "clf__estimator__metric": "euclidean"
     },
-    "train_time_s": 0.7
+    "train_time_s": 0.8
   }
 }

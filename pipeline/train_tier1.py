@@ -86,7 +86,8 @@ MODELS = {
         "pipeline": Pipeline([
             ("scaler", StandardScaler()),
             ("clf", OneVsRestClassifier(
-                LogisticRegression(solver="saga", max_iter=3000, random_state=42)
+                LogisticRegression(solver="saga", max_iter=3000, random_state=42,
+                                   class_weight="balanced")
             )),
         ]),
         "param_dist": {
