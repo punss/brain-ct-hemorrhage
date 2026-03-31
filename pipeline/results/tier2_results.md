@@ -10,7 +10,7 @@
 - SVM: `StandardScaler` → `PCA` (n_components tuned) → `OvR(SVC, probability=True, class_weight='balanced')`
 - Random Forest: `StandardScaler` → `OvR(RandomForestClassifier, class_weight='balanced')`
 - XGBoost: `OvR(XGBClassifier)` — XGBoost's `scale_pos_weight` cannot be set per-label inside OvR; imbalance is addressed via threshold calibration instead
-**Tuning:** `RandomizedSearchCV`, 20 iterations, 5-fold CV stratified on hemorrhage type. Primary CV metric: macro AUC.
+**Tuning:** `RandomizedSearchCV`, 20 iterations, 5-fold CV stratified on hemorrhage type. Primary CV metric: macro AUC-ROC, averaged equally across all 5 labels regardless of positive rate. Macro averaging treats each hemorrhage type as equally important — consistent with the clinical framing where rare types carry the same diagnostic weight as common ones.
 **Evaluation:** Val split only. Test split held out for final cross-tier evaluation.
 
 ---
@@ -142,7 +142,11 @@ RF's raw F1 (0.241) remains the lowest among Tier 2 models despite `class_weight
 LDA, QDA, GNB, and KNN have large calibration gains (0.19–0.26 F1) because their probability outputs are systematically biased by label imbalance. Calibrated thresholds for these models sit at 0.05–0.30, far below 0.5. These calibrated thresholds should be treated as part of the model specification, not as post-processing.
 
 ### Classifier chains add no value at this feature tier
-The 269-dim handcrafted feature vector is computed per image and already encodes intensity, spatial zone, texture, and cross-channel signals across all anatomical locations simultaneously. Providing chain label predictions as additional inputs does not add information the classifiers don't already have access to. This may change at Tier 3 where models operate on raw image arrays without explicit spatial summaries.
+Label co-occurrence analysis on the 2,929 cases reveals meaningful inter-label dependencies: 65% of intraventricular cases also have intraparenchymal, 49% also have subarachnoid; subdural and subarachnoid co-occur in 18–19% of their respective positive cases. Epidural is almost entirely independent (1–3% co-occurrence with any other type), consistent with its traumatic peripheral origin.
+
+Despite this real dependency structure, chains provide no AUC improvement. The likely explanation is that the 269-dim handcrafted feature vector already encodes the spatial and textural signals that drive co-occurrence — ring zone features capture center vs. periphery, GLCM captures homogeneity patterns, and region descriptors capture blob count and location. The chain mechanism would only add value if the chain prediction carried information about the lesion that the features did not already encode. At this feature tier, it does not.
+
+This conclusion may not hold at Tier 3, where models operate on raw image arrays without explicit spatial summaries. A CNN processing the same pixel array for intraparenchymal and intraventricular labels may benefit from chain conditioning in a way that a tree ensemble operating on a pre-computed spatial decomposition does not.
 
 ### Random Forest is slow with modest returns
 RF took 3.3× longer than XGBoost (322s vs 99s) for a val AUC that is 0.012 lower. The selected `max_depth=30` likely explains both the training time and the structural probability miscalibration that requires large threshold corrections.

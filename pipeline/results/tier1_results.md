@@ -4,11 +4,12 @@
 
 **Task:** Multi-label classification — predict presence/absence of 5 hemorrhage types independently.
 **Labels:** epidural, intraparenchymal, intraventricular, subarachnoid, subdural
-**Approach:** `OneVsRestClassifier` wrapping each base model — one binary classifier per label, trained independently. Each model sees the same 269-dim feature vector.
-**Data:** 2,929 cases (train: 2,049 | val: 440 | test: 440), stratified by hemorrhage type.
+**Label selection:** The source data includes a sixth binary column `any` (1 if any hemorrhage is present). All 2,929 cases in this dataset are hemorrhage-positive, so `any` = 1 for every case — it carries no discriminative signal and is excluded. The `intraventricular` label was deliberately retained despite having the lowest positive rate (8.7%) because it represents a clinically distinct hemorrhage type; dropping it would make the benchmark incomplete.
+**Approach:** `OneVsRestClassifier` wrapping each base model — one binary classifier per label, trained independently. Each model sees the same 269-dim feature vector. Multi-label framing was chosen over multi-class because 17% of cases carry more than one hemorrhage type simultaneously; a single-class label would force an arbitrary choice and discard real co-occurring pathology.
+**Data:** 2,929 cases (train: 2,049 | val: 440 | test: 440), stratified by hemorrhage type. Label positive rates: intraparenchymal 43.9%, subarachnoid 27.0%, subdural 24.9%, epidural 17.1%, intraventricular 8.7%.
 **Preprocessing:** `StandardScaler` applied to all models. `PCA` applied to LDA, QDA, GNB, KNN; `n_components` tuned as a hyperparameter. Logistic Regression uses L1/L2 regularization instead of PCA.
 **Class imbalance:** `class_weight='balanced'` applied to Logistic Regression. LDA, QDA, GNB, and KNN do not expose a class weight parameter; imbalance is addressed post-hoc via per-label threshold calibration for all models.
-**Tuning:** `RandomizedSearchCV`, 5-fold CV on train split stratified by hemorrhage type. Primary CV metric: macro AUC.
+**Tuning:** `RandomizedSearchCV`, 5-fold CV on train split stratified by hemorrhage type. Primary CV metric: macro AUC-ROC, averaged equally across all 5 labels regardless of their positive rate. Macro averaging was chosen because each hemorrhage type is a clinically independent outcome — a rare type such as intraventricular is not less important than a common one.
 **Evaluation:** Val split only. Test split held out for final evaluation across all tiers.
 
 ---
@@ -57,8 +58,8 @@
 ### AUC vs F1 divergence in QDA
 QDA achieves a high macro F1 (0.404) relative to its macro AUC (0.671). This reflects a difference in what the two metrics capture: AUC measures ranking quality across all thresholds, while F1 measures the quality of hard predictions at a single threshold. QDA uses aggressive internal thresholds that happen to produce more decisive predictions on this imbalanced dataset, even though its underlying ranking is weaker than Logistic Regression.
 
-### Intraventricular is the easiest label
-Every model achieves its highest AUC on intraventricular (0.785–0.866), despite it having the fewest positive cases (8.8% of training data). The ring features cleanly capture the anatomical signature — blood in the ventricles appears as a bright, homogeneous region in the center of the image, which is geometrically distinctive regardless of hemorrhage intensity.
+### Intraventricular is the easiest label despite being the rarest
+Every model achieves its highest AUC on intraventricular (0.785–0.866), despite it having the fewest positive cases (8.7% of training data). This validates the decision to retain the label: the concern that low case count would make it unlearnable proved unfounded. The ring features cleanly capture the anatomical signature — blood in the ventricles appears as a bright, homogeneous region in the center of the image, and the radial ring decomposition was explicitly designed to detect this pattern. Rarity does not imply difficulty when the anatomical signal is geometrically distinctive.
 
 ### Subarachnoid and subdural are the hardest labels
 Both sit at 0.55–0.61 AUC across all models. These hemorrhage types are diffuse and surface-level — subarachnoid blood spreads across sulci, subdural blood forms a thin crescent. Neither produces a compact, localized bright region, making them difficult to distinguish with intensity/texture features alone.
